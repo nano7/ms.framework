@@ -1,0 +1,42 @@
+{
+    "name"       : "nano7/ms.framework",
+    "description": "Nano7 - MS Framework",
+    "keywords"   : ["nano7", "ms", "framework", "google", "cloud", "appengine"],
+    "license"    : "GPL-3",
+
+    "authors": [
+        {
+            "name" : "Bruno Goncalves",
+            "email": "bugotech@gmail.com"
+        }
+    ],
+
+    "require": {
+        "php"              : "5.5.*|5.6.*|7.0.*|7.1.*|7.2.*",
+        "ext-mongodb"      : "*",
+        "slim/slim"        : " ^3.0",
+        "nesbot/carbon"     : "^1.20",
+        "vlucas/phpdotenv"  : "2.4.*",
+        "illuminate/support": "5.4.*",
+        "mongodb/mongodb"   : "^1.0.0"
+    },
+
+    "autoload": {
+        "files": [
+            "src/helpers.php"
+        ],
+
+        "psr-4": {
+            "Nano7\\Framework\\": "src/"
+        }
+    },
+
+    "config": {
+        "preferred-install"  : "dist",
+        "sort-packages"      : true,
+        "optimize-autoloader": true
+    },
+
+    "minimum-stability": "dev",
+    "prefer-stable"    : true
+}
