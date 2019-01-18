@@ -109,18 +109,29 @@ class Application
     }
 
     /**
+     * Setar path pelo $name.
+     *
+     * @param $name
+     * @param $path
+     */
+    public function setPath($name, $path)
+    {
+        $this->instance($name, $path, true);
+    }
+
+    /**
      * Bind all of the application paths in the container.
      *
      * @return void
      */
     protected function bindPathsInContainer()
     {
-        $this->instance('path.base',   $this->basePath());
-        $this->instance('path.apps',   $this->basePath('apps'));
+        $this->setPath('path.base', $this->basePath());
+        $this->setPath('path.apps', $this->basePath('apps'));
     }
 
     /**
-     * Get the base path of the Laravel installation.
+     * Get the base path.
      *
      * @param  string $path Optionally, a path to append to the base path
      * @return string
@@ -128,6 +139,19 @@ class Application
     public function basePath($path = '')
     {
         return $this->basePath . ($path ? DIRECTORY_SEPARATOR . $path : $path);
+    }
+
+    /**
+     * Get the path.
+     *
+     * @param  string $path Optionally, a path to append to the base path
+     * @return string
+     */
+    public function path($name, $path = '')
+    {
+        $base = $this->make($name);
+
+        return $base . ($path ? DIRECTORY_SEPARATOR . $path : $path);
     }
 
     /**
@@ -165,9 +189,13 @@ class Application
      * @param  mixed   $instance
      * @return void
      */
-    public function instance($name, $instance)
+    public function instance($name, $instance, $shared = false)
     {
         $this->instances[$name] = $instance;
+
+        if ($shared) {
+            $this->shareds[$name] = true;
+        }
     }
 
     /**
