@@ -2,7 +2,6 @@
     "name"       : "nano7/ms.framework",
     "description": "Nano7 - MS Framework",
     "keywords"   : ["nano7", "ms", "framework", "google", "cloud", "appengine"],
-    "license"    : "GPL-3",
 
     "authors": [
         {
